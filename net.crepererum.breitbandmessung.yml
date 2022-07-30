@@ -3,12 +3,42 @@ app-id: net.crepererum.breitbandmessung
 runtime: org.freedesktop.Platform
 runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
-command: hello.sh
+base: org.electronjs.Electron2.BaseApp
+base-version: '21.08'
+tags:
+  - proprietary
+command: breitbandmessung
+finish-args:
+  - --device=all
+  - --share=ipc
+  - --share=network
+  - --socket=pulseaudio
+  - --socket=wayland
+  - --socket=x11
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.node14
+build-options:
+  append-path: /usr/lib/sdk/node14/bin
+  env:
+    XDG_CACHE_HOME: /run/build/breitbandmessung/flatpak-node/cache
+    NPM_CONFIG_LOGLEVEL: info
+    NPM_CONFIG_CACHE: /run/build/breitbandmessung/flatpak-node/npm-cache
+    NPM_CONFIG_NODEDIR: /usr/lib/sdk/node14
+    NPM_CONFIG_OFFLINE: 'true'
 modules:
-  - name: hello
+  - name: breitbandmessung
     buildsystem: simple
     build-commands:
-      - install -D hello.sh /app/bin/hello.sh
+      - '. ${FLATPAK_BUILDER_BUILDDIR}/build.bash'
     sources:
       - type: file
-        path: hello.sh
+        path: build.bash
+      - type: file
+        path: run.bash
+      - type: file
+        filename: Breitbandmessung-linux.deb
+        url: 'https://download.breitbandmessung.de/bbm/Breitbandmessung-linux.deb'
+        only-arches:
+          - x86_64
+        sha256: 'b1f0664f845bccb62612c921ac72d074fb2bd9ea02d14fa7463480e55a33a8bc'
+      - 'generated-sources.json'
