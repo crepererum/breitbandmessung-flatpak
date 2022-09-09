@@ -24,12 +24,15 @@ modules:
       - type: file
         path: build.bash
       - type: file
+        path: apply_extra.bash
+      - type: file
         path: run.bash
       - type: file
         path: lsb-release
-      - type: file
+      - type: extra-data
         filename: Breitbandmessung-linux.deb
         url: 'https://download.breitbandmessung.de/bbm/Breitbandmessung-linux.deb'
         only-arches:
           - x86_64
-        sha256: 'b1f0664f845bccb62612c921ac72d074fb2bd9ea02d14fa7463480e55a33a8bc'
+        size: 68009538
+        sha256: 'd7699b7719258def66b2746d364d5102d220dce0b26debffbd47abb03663da2e'
