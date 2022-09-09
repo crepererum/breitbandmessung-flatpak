@@ -33,8 +33,12 @@ modules:
         path: net.crepererum.breitbandmessung.metainfo.xml
       - type: extra-data
         filename: Breitbandmessung-linux.deb
-        url: 'https://download.breitbandmessung.de/bbm/Breitbandmessung-linux.deb'
+        url: 'https://download.breitbandmessung.de/bbm/Breitbandmessung-3.3.0-linux.deb'
         only-arches:
           - x86_64
         size: 68009538
         sha256: 'd7699b7719258def66b2746d364d5102d220dce0b26debffbd47abb03663da2e'
+        x-checker-data:
+          type: html
+          url: https://download.breitbandmessung.de/bbm/
+          pattern: "<a href=\"(Breitbandmessung-([\\d\\.]+\\d)-linux.deb)\">"
