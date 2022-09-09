@@ -29,6 +29,8 @@ modules:
         path: run.bash
       - type: file
         path: lsb-release
+      - type: file
+        path: net.crepererum.breitbandmessung.metainfo.xml
       - type: extra-data
         filename: Breitbandmessung-linux.deb
         url: 'https://download.breitbandmessung.de/bbm/Breitbandmessung-linux.deb'
